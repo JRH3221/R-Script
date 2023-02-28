@@ -4,9 +4,8 @@
 
 int main() {
 	compiler com;
-
 	std::string location;
-	std::cin >> location;
+	std::getline(std::cin, location);
 
 	com.Parse(location);
 
