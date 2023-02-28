@@ -1,7 +1,14 @@
 #include <iostream>
+#include "compiler.h"
+#include <string>
 
 int main() {
-	std::cout << "Hello, World!" << std::endl;
+	compiler com;
+
+	std::string location;
+	std::cin >> location;
+
+	com.Parse(location);
 
 	return 0;
 }
