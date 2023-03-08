@@ -13,3 +13,4 @@ elimination of local vars and high level optimization
 generate python code
 
 ## Syntax <- non compiler
+print(string input);
