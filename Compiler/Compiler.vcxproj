@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="errorHandling.cpp" />
     <ClCompile Include="generate.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="parse.cpp" />

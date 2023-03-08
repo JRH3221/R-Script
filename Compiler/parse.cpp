@@ -7,12 +7,26 @@
 void createFile() {
 	std::ofstream pyfile ("main.py");
 
-	pyfile << "testing text";
+	pyfile << "Invalid Compile Creation";
 
 	pyfile.close();
 }
 
+bool FileRead(std::string location) { //Read name of file to make sure it's valid
+	std::string concatName;
+	for (int i = location.length() - 8; i < location.length(); ++i) {
+		concatName += location[i];
+	}
+	if (concatName == ".rscript") {
+		return true;
+	}
+	ErrorLogging::LogText("Must Use .rscript");
+	return false;
+}
+
 void compiler::Parse(std::string location) {
+	if (!FileRead(location)) return; //Make sure the file is actually a .rscript
+
 	std::ifstream sr(location);
 
 	char character;
@@ -25,23 +39,12 @@ void compiler::Parse(std::string location) {
 
 		createFile();
 
-		while (sr) {
-			while (true) {
-				if (sr) {
-					character = sr.get();
-					if (character == ' ') break;
-					point.push_back(character);
-				}
-				else {
-					break;
-				}
-			}
-			std::cout << point;
-		}
-		std::cout << "end of file";
+		//while (sr) {
+
+		//}
 	}
-	else {
-		std::cout << "Invalid Location" << std::endl;
+	else { //Can't Open File
+		ErrorLogging::LogText("Invalid Script Location");
 		return;
 	}
 }
