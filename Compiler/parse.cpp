@@ -28,20 +28,18 @@ void compiler::Parse(std::string location) {
 	if (!FileRead(location)) return; //Make sure the file is actually a .rscript
 
 	std::ifstream sr(location);
-
-	char character;
-	std::string point;
+	
+	std::string word;
 
 	if (sr.is_open()) {
-		std::cout << "Compiling...";
+		std::cout << "Compiling..."; //Show that compiling has started
+		createFile(); //Create target python file
 
-		std::vector<std::string> syntax = { "print" };
-
-		createFile();
-
-		//while (sr) {
-
-		//}
+		while (sr >> word) {
+			if (syntax.find(word) != syntax.end()) {
+				//contained in syntax list
+			}
+		}
 	}
 	else { //Can't Open File
 		ErrorLogging::LogText("Invalid Script Location");
