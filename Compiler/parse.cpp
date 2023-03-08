@@ -29,15 +29,26 @@ void compiler::Parse(std::string location) {
 
 	std::ifstream sr(location);
 	
+	char character;
 	std::string word;
+	std::string identifier = "";
 
 	if (sr.is_open()) {
 		std::cout << "Compiling..."; //Show that compiling has started
 		createFile(); //Create target python file
 
-		while (sr >> word) {
-			if (syntax.find(word) != syntax.end()) {
-				//contained in syntax list
+		while (sr.good()) {
+			character = sr.get();
+			if (breaks.find(character) == breaks.end()){ // character is not a break character
+				word += character;
+			}
+			else {
+				if (word == "print") {
+					functions.insert(std::pair<std::string, std::string>("print", "holding"));
+				}
+
+
+				word = "";
 			}
 		}
 	}
