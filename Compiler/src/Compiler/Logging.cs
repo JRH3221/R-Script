@@ -16,7 +16,7 @@ namespace Compiler
             ErrorCode = code;
         }
     }
-    public enum Code { Null = 0, PathError = 1, EmptyFile = 2, InvalidTarget = 3}
+    public enum Code { Null = 0, PathError = 1, EmptyFile = 2, InvalidTarget = 3, NotImplemented = 4}
     internal class Logging
     {
         public static void Log(string? message = null, Code code = Code.Null)

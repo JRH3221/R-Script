@@ -14,6 +14,14 @@ namespace Compiler
                 {
                     Console.WriteLine("Enter path: ");
                     path = Console.ReadLine();
+
+                    if(path is null)
+                    {
+                        throw new CustomException("Invalid Script Path", Code.PathError);
+                    }
+
+                    path = path.Replace("\"", "");
+
                     Console.WriteLine("Enter target (Python = 0, C++ = 1)");
                     target = (SourceReader.Target)int.Parse(Console.ReadLine() ?? "-1");
                 }

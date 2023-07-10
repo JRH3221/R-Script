@@ -17,7 +17,6 @@ namespace Compiler
         /// <exception cref="CustomException"></exception>
         public void Compile(string path, Target target)
         {
-            path = path.Replace("\"", "");
             if (!File.Exists(path)) throw new CustomException("Could not find source file", Code.PathError);
 
             using(StreamReader streamReader = new StreamReader(path))
@@ -33,7 +32,7 @@ namespace Compiler
                         throw new CustomException("Invalid target type, (Must be '0' or '1')", Code.InvalidTarget);
 
                     case Target.Python:
-                        break;
+                        throw new CustomException("Python isn't implemented yet", Code.NotImplemented);
 
                     case Target.Cpp:
                         CppParsing parsing = new CppParsing();
